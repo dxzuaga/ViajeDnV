@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Earthy Neutrals -->
     <!-- Application Structure Plan: Se ha diseñado una aplicación de una sola página con un flujo narrativo vertical. El usuario se desplaza cronológicamente a través del itinerario, día por día. Una barra de navegación fija en la parte superior actúa como una línea de tiempo, permitiendo un acceso rápido a cualquier día y mostrando siempre la etapa actual del viaje. Esta estructura es intuitiva para un itinerario, ya que imita el progreso natural del viaje, facilitando la comprensión y la navegación sin abrumar al usuario con interfaces complejas como un dashboard. -->
-    <!-- Visualization & Content Choices: La información del itinerario se presenta en tarjetas diarias para una clara separación. Los pocos datos cuantitativos (costes) se visualizan en un gráfico de barras simple (Chart.js) para una comparación visual inmediata, lo cual es más efectivo que una tabla para tan pocos datos. Las actividades se listan de forma clara. El recorrido geográfico se representa con un diagrama de flujo simple hecho con HTML/CSS y unicode, evitando la carga de una librería de mapas. Se prioriza la legibilidad y la fluidez narrativa. NO se usa SVG ni Mermaid. -->
+    <!-- Visualization & Content Choices: La información del itinerario se presenta en tarjetas diarias para una clara separación. Los pocos datos cuantitativos (costes) se visualizan en un gráfico de barras simple (Chart.js) para una comparación visual inmediata, lo cual es más efectivo que una tabla para tan pocos datos. Las actividades se listan de forma clara. Se han añadido imágenes para puntos de interés específicos, haciéndolas clicables para enlazar a Google Maps y mostrando sus costes asociados, mejorando la interactividad y la contextualización visual. El recorrido geográfico se representa con un diagrama de flujo simple hecho con HTML/CSS y unicode, evitando la carga de una librería de mapas. Se prioriza la legibilidad y la fluidez narrativa. NO se usa SVG ni Mermaid. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
@@ -83,10 +83,7 @@
                     day: 2,
                     title: "Andorra",
                     icon: '🏔️',
-                    costs: {
-                        'Hotel + Circo (por persona)': { value: 123, url: 'https://www.buscounchollo.com/reserva-chollo/33576/hotel-centrico-4-en-andorra-con-cirque-du-soleil-y-copa-de-bienvenida?topCholloId=578173&ha=&start=2025-08-02&end=2025-08-04&nA=2&nNe=0&edN=' },
-                        'Caldea (por persona)': { value: 30, url: 'https://www.caldea.com/reserva-ahora' }
-                    },
+                    costs: {}, // Los costes se muestran con las imágenes ahora
                     activities: [
                         "Llegada a Andorra y check-in en el hotel.",
                         "Paseo tranquilo por Andorra la Vella: tiendas, casco antiguo y cafés.",
@@ -94,6 +91,22 @@
                         "Tiempo libre o descanso en el hotel.",
                         "Cena tranquila.",
                         "Noche: Espectáculo del Circo del Sol."
+                    ],
+                    images: [
+                        {
+                            alt: 'Hotel en Andorra',
+                            src: 'https://cdn2.paraty.es/best-corporate/images/f8ac9de9a9c7762=s1900',
+                            mapUrl: 'https://maps.app.goo.gl/aJ8oGnTd5Q9bx9oVA',
+                            costText: '123€ (por persona)',
+                            costLink: 'https://www.buscounchollo.com/reserva-chollo/33576/hotel-centrico-4-en-andorra-con-cirque-du-soleil-y-copa-de-bienvenida?topCholloId=578173&ha=&start=2025-08-02&end=2025-08-04&nA=2&nNe=0&edN='
+                        },
+                        {
+                            alt: 'Vista aérea de Andorra la Vella',
+                            src: 'https://media.istockphoto.com/id/928115938/es/foto/vista-a%C3%A9rea-de-andorra-la-vella-escaldes-al-atardecer-al-atardecer-horas-caldea-azul.jpg?s=612x612&w=0&k=20&c=9m9-PXdZ1sCW4igq0IxUBwgliy9cMgFcgy6RX68OrAo=',
+                            mapUrl: 'https://maps.app.goo.gl/UrhLYjQfe2XMeL5h7',
+                            costText: '',
+                            costLink: ''
+                        }
                     ]
                 },
                 {
@@ -109,13 +122,29 @@
                         "Noche: Visita a Caldea (nocturna) para una experiencia tranquila en el spa con luces especiales.",
                         "Cena ligera, opcionalmente dentro de Caldea.",
                         "Vuelta al hotel a descansar."
+                    ],
+                    images: [
+                        {
+                            alt: 'Caldea Spa en Andorra',
+                            src: 'https://dzhi65wojqlkc.cloudfront.net/blog/wp-content/uploads/2018/08/Caldea.jpg',
+                            mapUrl: 'https://maps.app.goo.gl/Y2KRxbqBZ7E8nBUAA',
+                            costText: '30€ (por persona)',
+                            costLink: 'https://www.caldea.com/reserva-ahora'
+                        },
+                        {
+                            alt: 'Espectáculo del Cirque du Soleil en Andorra',
+                            src: 'https://www.andorramania.net/pictures/cirque-du-soleil/cirque-du-soleil-andorra-2025-04.jpg',
+                            mapUrl: 'https://maps.app.goo.gl/UrhLYjQfe2XMeL5h7', // Mismo enlace de Andorra general
+                            costText: '',
+                            costLink: ''
+                        }
                     ]
                 },
                 {
                     day: 4,
                     title: "Lourdes",
                     icon: '🙏',
-                    costs: { 'Hotel (por persona)': { value: 38, url: 'https://www.hotel-bb.com/en/hotel/lourdes-centre?gps%5Bvalue%5D=43.091463%2C-0.045726&gps%5Bdistance%5D%5Bfrom%5D=10&bounds=%7B"south"%3A43.0661285%2C"west"%3A-0.1467838%2C"north"%3A43.151809%2C"east"%3A-0.0143258%2C"type"%3A"locality"%7D&loc_country=FR&arrival_date=08%2F04%2F2025&departure_date=08%2F05%2F2025&destination=Lourdes&internal_keywords=Lourdes&viewport=2340x980&r1_ad=2&currency_code=EUR#rooms-block-scroll' } },
+                    costs: {}, // El coste del hotel se muestra con la imagen ahora
                     activities: [
                         "Viaje hacia Lourdes por la mañana.",
                         "Llegada y check-in en el hotel.",
@@ -123,6 +152,22 @@
                         "Tiempo libre en los jardines o tiendas cercanas.",
                         "Cena tranquila en el centro.",
                         "Noche: Opción de asistir a la procesión de las velas, una experiencia calmada y bonita."
+                    ],
+                    images: [
+                        {
+                            alt: 'Hotel en Lourdes',
+                            src: 'https://res.cloudinary.com/hzekpb1cg/image/upload/q_auto:low,f_auto/s3/public/prod/s3fs-public/hotel-lourdes-centre_4839_exterior-45503.jpg',
+                            mapUrl: 'https://maps.app.goo.gl/1cv9Ap9weqoQxG3B8',
+                            costText: '38€ (por persona)',
+                            costLink: 'https://www.hotel-bb.com/en/hotel/lourdes-centre?gps%5Bvalue%5D=43.091463%2C-0.045726&gps%5Bdistance%5D%5Bfrom%5D=10&bounds=%7B"south"%3A43.0661285%2C"west"%3A-0.1467838%2C"north"%3A43.151809%2C"east"%3A-0.0143258%2C"type"%3A"locality"%7D&loc_country=FR&arrival_date=08%2F04%2F2025&departure_date=08%2F05%2F2025&destination=Lourdes&internal_keywords=Lourdes&viewport=2340x980&r1_ad=2&currency_code=EUR#rooms-block-scroll'
+                        },
+                        {
+                            alt: 'Santuario de Lourdes',
+                            src: 'https://www.franciaturismo.net/es/wp-content/uploads/sites/17/lourdes-santuario-hd.jpg',
+                            mapUrl: 'https://maps.app.goo.gl/c94C6fkMD9ZARaWc9',
+                            costText: '',
+                            costLink: ''
+                        }
                     ]
                 },
                 {
@@ -138,6 +183,22 @@
                         "Opcional: Parada breve en Hondarribia.",
                         "Llegada a San Sebastián por la tarde/noche y check-in.",
                         "Cena junto al mar o en la Parte Vieja."
+                    ],
+                    images: [
+                        {
+                            alt: 'Vista de Bayona',
+                            src: 'https://www.tortajadanieto.com/images/europa/francia/aquitania/pirineos_atlanticos/baiona/blog-franciacom.jpg',
+                            mapUrl: 'https://maps.app.goo.gl/8CVWA8f4S79gMpr69',
+                            costText: '',
+                            costLink: ''
+                        },
+                        {
+                            alt: 'Edificios coloridos de Bayona',
+                            src: 'https://s.libertaddigital.com/2024/06/09/bayona-viajes-francia-ld-15.jpg',
+                            mapUrl: 'https://maps.app.goo.gl/8CVWA8f4S79gMpr69',
+                            costText: '',
+                            costLink: ''
+                        }
                     ]
                 },
                 {
@@ -152,6 +213,22 @@
                         "Comida tranquila cerca del puerto.",
                         "Paseo por el Parque Cristina Enea, un oasis de naturaleza.",
                         "Cena suave y ambiente relajado por la ciudad."
+                    ],
+                    images: [
+                        {
+                            alt: 'Bahía de la Concha, San Sebastián',
+                            src: 'https://d1vp8nomjxwyf1.cloudfront.net/wp-content/uploads/sites/49/2016/11/15142323/arrizul_group_san_sebastian_07.jpg',
+                            mapUrl: 'https://maps.app.goo.gl/spThPsQy8HED51w69',
+                            costText: '',
+                            costLink: ''
+                        },
+                        {
+                            alt: 'Panorámica de San Sebastián',
+                            src: 'https://www.barcelo.com/guia-turismo/wp-content/uploads/que-visitar-en-san-sebastian.jpg',
+                            mapUrl: 'https://maps.app.goo.gl/spThPsQy8HED51w69',
+                            costText: '',
+                            costLink: ''
+                        }
                     ]
                 },
                 {
@@ -171,7 +248,7 @@
                 {
                     day: 8,
                     title: "San Sebastián → Bilbao",
-                    icon: '�',
+                    icon: '🎨',
                     costs: {},
                     activities: [
                         "Desayuno y salida hacia Bilbao.",
@@ -179,6 +256,22 @@
                         "Paseo por la ciudad: Parque de Doña Casilda, Ría de Bilbao y puente Zubizuri.",
                         "Posible visita exterior al Guggenheim para admirar su arquitectura.",
                         "Cena tranquila con ambiente moderno o tradicional."
+                    ],
+                    images: [
+                        {
+                            alt: 'Bilbao en la ría',
+                            src: 'https://www.bizkaiatalent.eus/wp-content/uploads/2024/09/Bilbao.jpg',
+                            mapUrl: 'https://maps.app.goo.gl/ye8BCoSSxzNw64VN6',
+                            costText: '',
+                            costLink: ''
+                        },
+                        {
+                            alt: 'Panorámica de Bilbao',
+                            src: 'https://content.r9cdn.net/rimg/dimg/d7/6d/bf09ef37-city-22202-164d2243c9c.jpg?width=1366&height=768&xhint=1091&yhint=727&crop=true',
+                            mapUrl: 'https://maps.app.goo.gl/ye8BCoSSxzNw64VN6',
+                            costText: '',
+                            costLink: ''
+                        }
                     ]
                 },
                 {
@@ -216,7 +309,7 @@
             tripData.forEach(item => {
                 const navItem = document.createElement('a');
                 navItem.href = `#day-${item.day}`;
-                navItem.textContent = item.day === 'gastos' ? item.icon : `Día ${item.day}`;
+                navItem.textContent = `Día ${item.day}`;
                 navItem.dataset.target = `day-${item.day}`;
                 navItem.className = 'timeline-item text-sm md:text-base cursor-pointer px-3 py-2 rounded-full font-medium text-gray-600 hover:bg-gray-200';
                 navContainer.appendChild(navItem);
@@ -233,105 +326,59 @@
                         </div>
                     </div>`;
 
-                if (item.isChart) {
-                    // This block will no longer be executed as 'gastos' item is removed
-                } else {
-                    let costsHTML = '';
-                    for (const key in item.costs) {
-                        const cost = item.costs[key];
-                        const value = typeof cost === 'object' ? cost.value : cost;
-                        const url = typeof cost === 'object' ? cost.url : null;
-                        
-                        let costContent = `
-                            <div class="flex items-center text-gray-700 bg-amber-50 rounded-lg p-2">
-                               <span class="font-semibold mr-2">${key}:</span>
-                               <span class="text-[#D4A373] font-bold">${value}€</span>
-                            </div>`;
-                        
-                        if (url) {
-                            costContent = `<a href="${url}" target="_blank" rel="noopener noreferrer" class="no-underline text-inherit">${costContent}</a>`;
-                        }
-                        costsHTML += `<div class="mr-4 mb-2">${costContent}</div>`;
-                    }
-
-                    if(costsHTML) {
-                        contentHTML += `<div class="flex flex-wrap mb-6">${costsHTML}</div>`;
-                    }
-                    
-                    contentHTML += '<ul class="space-y-3 list-inside list-disc text-gray-700">';
-                    item.activities.forEach(activity => {
-                        contentHTML += `<li>${activity}</li>`;
+                // Add images if present for the day - MOVED BEFORE ACTIVITIES LIST
+                if (item.images && item.images.length > 0) {
+                    contentHTML += '<div class="flex flex-wrap justify-center gap-6 my-6">';
+                    item.images.forEach(img => {
+                        contentHTML += `
+                            <div class="w-full sm:w-1/2 md:w-1/2 lg:w-1/3 xl:w-1/3 p-2 flex flex-col items-center">
+                                <a href="${img.mapUrl}" target="_blank" rel="noopener noreferrer" class="block rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow w-full">
+                                    <img src="${img.src}" alt="${img.alt}" class="w-full h-auto object-cover rounded-lg">
+                                </a>
+                                <p class="text-center text-sm text-gray-500 mt-2 mb-1">${img.alt}</p>
+                                ${img.costText ? `<p class="text-center text-sm font-semibold text-[#D4A373]">
+                                    <a href="${img.costLink}" target="_blank" rel="noopener noreferrer" class="hover:underline">
+                                        ${img.costText}
+                                    </a>
+                                </p>` : ''}
+                            </div>
+                        `;
                     });
-                    contentHTML += '</ul>';
+                    contentHTML += '</div>';
                 }
+
+                // Main costs block (kept for other costs not tied to images, though empty for Day 2/3/4 now)
+                let costsHTML = '';
+                for (const key in item.costs) {
+                    const cost = item.costs[key];
+                    const value = typeof cost === 'object' ? cost.value : cost;
+                    const url = typeof cost === 'object' ? cost.url : null;
+                    
+                    let costContent = `
+                        <div class="flex items-center text-gray-700 bg-amber-50 rounded-lg p-2">
+                           <span class="font-semibold mr-2">${key}:</span>
+                           <span class="text-[#D4A373] font-bold">${value}€</span>
+                        </div>`;
+                    
+                    if (url) {
+                        costContent = `<a href="${url}" target="_blank" rel="noopener noreferrer" class="no-underline text-inherit">${costContent}</a>`;
+                    }
+                    costsHTML += `<div class="mr-4 mb-2">${costContent}</div>`;
+                }
+
+                if(costsHTML) {
+                    contentHTML += `<div class="flex flex-wrap mb-6">${costsHTML}</div>`;
+                }
+                
+                contentHTML += '<ul class="space-y-3 list-inside list-disc text-gray-700">';
+                item.activities.forEach(activity => {
+                    contentHTML += `<li>${activity}</li>`;
+                });
+                contentHTML += '</ul>';
                 
                 section.innerHTML = contentHTML;
                 contentContainer.appendChild(section);
             });
-
-            // No Chart.js initialization needed if 'gastos' section is removed.
-            // const allCosts = tripData.reduce((acc, day) => {
-            //     const dayLabel = `Día ${day.day}`;
-            //     for (const [key, valueObj] of Object.entries(day.costs)) {
-            //         const value = typeof valueObj === 'object' ? valueObj.value : valueObj;
-            //         acc.labels.push(`${key} (${dayLabel})`);
-            //         acc.data.push(value);
-            //     }
-            //     return acc;
-            // }, { labels: [], data: [] });
-
-            // const ctx = document.getElementById('costsChart');
-            // if (ctx) { // Only initialize if element exists
-            //     new Chart(ctx.getContext('2d'), {
-            //         type: 'bar',
-            //         data: {
-            //             labels: allCosts.labels,
-            //             datasets: [{
-            //                 label: 'Coste en €',
-            //                 data: allCosts.data,
-            //                 backgroundColor: ['#E9C46A', '#F4A261', '#E76F51'],
-            //                 borderColor: ['#D4A373', '#CB8B50', '#C15C3F'],
-            //                 borderWidth: 1,
-            //                 borderRadius: 8
-            //             }]
-            //         },
-            //         options: {
-            //             responsive: true,
-            //             maintainAspectRatio: false,
-            //             plugins: {
-            //                 legend: {
-            //                     display: false
-            //                 },
-            //                 tooltip: {
-            //                     backgroundColor: '#3A3A3A',
-            //                     titleFont: { size: 14 },
-            //                     bodyFont: { size: 12 },
-            //                     padding: 10,
-            //                     cornerRadius: 6
-            //                 }
-            //             },
-            //             scales: {
-            //                 y: {
-            //                     beginAtZero: true,
-            //                     grid: {
-            //                         color: '#F0F0F0'
-            //                     },
-            //                     ticks: {
-            //                         callback: function(value) {
-            //                             return value + '€'
-            //                         }
-            //                     }
-            //                 },
-            //                 x: {
-            //                      grid: {
-            //                         display: false
-            //                     }
-            //                 }
-            //             }
-            //         }
-            //     });
-            // }
-
 
             const navLinks = document.querySelectorAll('.timeline-item');
             const sections = document.querySelectorAll('section[id^="day-"]');
